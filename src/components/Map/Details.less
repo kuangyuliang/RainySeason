@@ -1,0 +1,274 @@
+.right-popup {
+    position: absolute;
+    width: 550px;
+    top: 55px;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    box-sizing: border-box;
+    background-color: #fff;
+    :global {
+        .right-chart-title {
+            position: relative;
+            display: block;
+            padding-left: 20px;
+            margin-top: 10px;
+            line-height: 40px;
+            font-size: 16px;
+        }
+        .right-chart-title:after {
+            position: absolute;
+            left: 5px;
+            top: 12px;
+            content: '';
+            width: 8px;
+            height: 18px;
+            background: #298ebd;
+        }
+        .right-chart-title>span {
+            font-size: 12px;
+            float: right;
+            font-weight: normal;
+            margin-right: 10px;
+        }
+        .right-chart-box {
+            min-height: 200px;
+            background-color: #f1f1f1;
+        }
+        .right-aqi-box {
+            height: 320px;
+            background: url(../../assets/right-aqi-bg.png) no-repeat center top;
+        }
+        .aqi-update-time {
+            margin: 0;
+            padding: 5px;
+            font-size: 14px;
+            color: #333;
+        }
+        .dish {
+            position: relative;
+            width: 100%;
+            height: 150px;
+        }
+        .dish>img {
+            pointer-events: none;
+        }
+        .aqi-table {
+            clear: both;
+            width: 100%;
+            border-collapse: separate;
+            box-sizing: border-box;
+        }
+        .aqi-table td {
+            text-align: center;
+            padding: 8px;
+        }
+        .aqi-table span {
+            display: inline-block;
+            vertical-align: top;
+            font-weight: normal;
+            height: 26px;
+            font-size: 12px;
+            line-height: 26px;
+            box-sizing: border-box;
+        }
+        .aqi-table span:first-child {
+            width: 50px;
+            background: #fafafa;
+            background: rgba(255, 255, 255, .8);
+            border-radius: 4px 0 0 4px;
+            border-right: none;
+        }
+        .aqi-table span:nth-child(2) {
+            width: 50px;
+            line-height: 24px;
+            text-align: center;
+            color: #fff;
+            border-radius: 0 4px 4px 0;
+        }
+        .sm-title {
+            clear: both;
+            margin-top: 20px;
+            margin-bottom: 0;
+            padding: 0 32px;
+            line-height: 30px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .sm-title>span {
+            font-size: 12px;
+            font-weight: normal;
+            float: right;
+            line-height: 1.4;
+        }
+        /*仪表盘*/
+        .dish .pan {
+            position: absolute;
+            bottom: 0;
+            left: 24px;
+        }
+        .dish .bar-wrap {
+            position: absolute;
+            height: 110px;
+            width: 214px;
+            left: 52px;
+            bottom: 9px;
+            overflow: hidden;
+        }
+        .dish .bar-wrap .bar {
+            width: 213px;
+            height: 213px;
+            border: 16px solid #ececec;
+            border-radius: 50%;
+            -webkit-transition: transform .3s;
+            -moz-transition: transform .3s;
+            -ms-transition: transform .3s;
+            -o-transition: transform .3s;
+            transition: transform .3s;
+            -webkit-transform: rotateZ(-50deg);
+            -moz-transform: rotateZ(-50deg);
+            -ms-transform: rotateZ(-50deg);
+            -o-transform: rotateZ(-50deg);
+            transform: rotateZ(-50deg);
+        }
+        .dish .bar-wrap .bar img {
+            position: absolute;
+            left: 83px;
+            top: 8px;
+            -webkit-transform: rotateZ(-45deg);
+            -moz-transform: rotateZ(-45deg);
+            -ms-transform: rotateZ(-45deg);
+            -o-transform: rotateZ(-45deg);
+            transform: rotateZ(-45deg);
+            transform-origin: center 80px;
+        }
+        .dish .aqi-level-box {
+            position: relative;
+            z-index: 9;
+            float: right;
+            padding-top: 30px;
+            padding-right: 20px;
+            font-size: 13px;
+        }
+        .dish .health-tip-box {
+            position: relative;
+            margin: 20px 0;
+        }
+        .dish .aqi-level-box .health-tip {
+            display: inline-block;
+            width: 108px;
+            padding-left: 10px;
+            box-sizing: border-box;
+            height: 24px;
+            line-height: 24px;
+            text-align: center;
+            font-size: 13px;
+            background: rgba(255, 255, 255, .3) url(../../assets/h-tip.png) no-repeat 10px center;
+            border-radius: 12px;
+        }
+        .health-tip-text {
+            position: absolute;
+            top: 26px;
+            right: 27px;
+            display: block;
+            width: 200px;
+            padding: 6px 10px;
+            border: 1px solid #eee;
+            box-shadow: 1px 2px 8px rgba(0, 0, 0, .2);
+            border-radius: 5px;
+            background-color: #fff;
+            background-color: rgba(255, 255, 255, .9);
+            display: none;
+        }
+        .health-tip-text i {
+            display: block;
+            padding: 5px 0;
+            font-style: normal;
+            font-size: 12px;
+        }
+        .health-tip-text i:first-child {
+            border-bottom: 1px solid #999;
+        }
+        .health-tip-box:hover .health-tip {
+            background-color: rgba(255, 255, 255, .4);
+            cursor: pointer;
+        }
+        .health-tip-box:hover .health-tip-text {
+            display: block;
+        }
+        .dish .aqi-level {
+            display: inline-block;
+            width: 70px;
+            height: 22px;
+            font-size: 12px;
+            line-height: 22px;
+            text-align: center;
+            border-radius: 5px;
+        }
+        .dish .aqi-value {
+            position: absolute;
+            width: 100px;
+            left: 110px;
+            bottom: 20px;
+            font-size: 44px;
+            line-height: 50px;
+            color: #4a4a4a;
+            text-align: center;
+        }
+        .dish .aqi-name {
+            position: absolute;
+            left: 136px;
+            bottom: -5px;
+            font-size: 12px;
+        }
+        .bgcolor0 {
+            background: #909090 !important;
+            color: #fff !important;
+        }
+        .bgcolor1 {
+            background: #74C900 !important;
+            color: #fff !important;
+        }
+        .bgcolor2 {
+            background: #F1CC04 !important;
+            color: #333 !important;
+        }
+        .bgcolor3 {
+            background: #EE7E00 !important;
+            color: #fff !important;
+        }
+        .bgcolor4 {
+            background: #EA000D !important;
+            color: #fff !important;
+        }
+        .bgcolor5 {
+            background: #83004E !important;
+            color: #fff !important;
+        }
+        .bgcolor6 {
+            background: #52001E !important;
+            color: #fff !important;
+        }
+        .color0 {
+            color: #909090 !important;
+        }
+        .color1 {
+            color: #74C900 !important;
+        }
+        .color2 {
+            color: #F1CC04 !important;
+        }
+        .color3 {
+            color: #EE7E00 !important;
+        }
+        .color4 {
+            color: #EA000D !important;
+        }
+        .color5 {
+            color: #83004E !important;
+        }
+        .color6 {
+            color: #52001E !important;
+        }
+    }
+}

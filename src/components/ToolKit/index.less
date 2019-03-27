@@ -1,0 +1,120 @@
+.right-map-toolbar {
+    right: 20px;
+    position: absolute;
+    bottom: 110px;
+    :global {
+        .zoom-btn {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 10px;
+            cursor: pointer;
+            color: #fff;
+            box-shadow: 1px 1px 10px rgba(0, 0, 0, .3);
+        }
+        .tool-box {
+            width: 26px;
+            padding: 10px 0;
+            border-radius: 13px;
+            background-color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);
+            list-style-type: none
+        }
+        .tool-box>li {
+            position: relative;
+            height: 26px;
+            line-height: 26px;
+            margin-bottom: 5px;
+            cursor: pointer;
+            /*border-radius: 0 13px 13px 0;*/
+            border-radius: 50%;
+        }
+        .tool-box>li>.text {
+            position: absolute;
+            line-height: 26px;
+            padding: 0 10px 0 15px;
+            top: 0;
+            color: #333;
+            right: 26px;
+            white-space: nowrap;
+            border-radius: 13px 0 0 13px;
+            color: #000;
+        }
+        .tool-box>li>.icons {
+            display: inline-block;
+            vertical-align: top;
+            margin: 5px auto;
+            -webkit-transition: transform .5s;
+            -o-transition: transform .5s;
+            transition: transform .5s;
+        }
+        .tool-box>li>.icons:hover {
+            -webkit-transform: scale(1.1);
+            -ms-transform: scale(1.1);
+            -o-transform: scale(1.1);
+            transform: scale(1.1);
+        }
+        .tool-box>li.active {
+            background-color: #298EBD;
+            color: #fff;
+        }
+        .tool-box>li:hover>.text {
+            background-color: rgba(255, 255, 255, 0.7);
+            color: #333;
+            /*background-color: #298EBD;*/
+        }
+        .icon.icon44x44 {
+            width: 26px;
+            height: 26px;
+            display: inline-block;
+        }
+        .icon.icon44x44:hover {
+            -webkit-transform: scale(1.2);
+            -ms-transform: scale(1.2);
+            -o-transform: scale(1.2);
+            transform: scale(1.2);
+            -webkit-transition: -webkit-transform .375s;
+            -o-transition: -o-transform .375s;
+            transition: transform .375s;
+        }
+        .icon.icon44x44::before {
+            display: block;
+            width: 44px;
+            height: 44px;
+            content: '';
+            background-image: url('../../assets/icons.png');
+            background-repeat: no-repeat;
+            -webkit-transform: scale(.6);
+            -ms-transform: scale(.6);
+            -o-transform: scale(.6);
+            transform: scale(.6);
+            -webkit-transform-origin: 0 0;
+            -ms-transform-origin: 0 0;
+            -o-transform-origin: 0 0;
+            transform-origin: 0 0;
+        }
+        .icon-plus.icon44x44::before {
+            background-position: -216px -508px;
+        }
+        .icon-minus.icon44x44::before {
+            background-position: 0 -508px;
+        }
+        .icon-search.icon44x44::before {
+            background-position: -602px 0;
+        }
+        .icon-traffic.icon44x44::before {
+            background-position: -440px -108px;
+        }
+        .icon-map-marker.icon44x44::before {
+            background-position: -548px -270px;
+        }
+        .icon-measure.icon44x44::before {
+            background-position: -548px -432px;
+        }
+        .icon-unlock.icon44x44::before {
+            background-position: -440px -54px;
+        }
+    }
+}

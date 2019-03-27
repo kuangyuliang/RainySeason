@@ -1,0 +1,197 @@
+.map {
+    overflow: hidden;
+    :global {
+        .amap-logo {
+            display: none !important;
+        }
+        .amap-copyright {
+            display: none !important;
+        }
+        .station-icon {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            margin-right: 5px;
+            vertical-align: top;
+            position: relative;
+        }
+        .station-icon::before {
+            box-sizing: border-box;
+        }
+        .station-icon .marker-value {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            color: #fff;
+            margin-left: 0px;
+            left: 0;
+            top: 0;
+            line-height: 25px;
+        }
+        .station-icon-max {
+            width: 25px;
+            height: 25px;
+        }
+        .station-icon5::before {
+            content: '';
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: #298EBD;
+            vertical-align: top;
+            border: 2px solid #fff;
+        }
+        .station-icon1::before {
+            content: '';
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            border-radius: 3px;
+            background-color: #298EBD;
+            vertical-align: top;
+            border: 2px solid #fff;
+        }
+        .station-icon4::before {
+            content: '';
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            border-radius: 3px;
+            border: 2px solid #fff;
+            background-color: #298EBD;
+            -webkit-transform: rotateZ(45deg);
+            -ms-transform: rotateZ(45deg);
+            -o-transform: rotateZ(45deg);
+            transform: rotateZ(45deg);
+            vertical-align: top;
+        }
+        .station-icon.bg-color0::before {
+            background-color: #909090;
+        }
+        .station-icon.bg-color1::before {
+            background-color: #74C900;
+            box-shadow: 0 0 6px 10px rgba(116, 201, 0, .3);
+        }
+        .station-icon.bg-color2::before {
+            background-color: #F1CC04;
+            box-shadow: 0 0 6px 10px rgba(241, 204, 4, .3);
+        }
+        .station-icon.bg-color3::before {
+            background-color: #EE7E00;
+            box-shadow: 0 0 6px 10px rgba(238, 126, 0, .3);
+        }
+        .station-icon.bg-color4::before {
+            background-color: #EA000D;
+            box-shadow: 0 0 6px 10px rgba(234, 0, 13, .3);
+        }
+        .station-icon.bg-color5::before {
+            background-color: #83004E;
+            box-shadow: 0 0 6px 10px rgba(131, 0, 78, .3);
+        }
+        .station-icon.bg-color6::before {
+            background-color: #52001E;
+            box-shadow: 0 0 6px 10px rgba(82, 0, 30, .3);
+        }
+        .mark-info {
+            position: absolute;
+            height: 76px;
+            z-index: 10;
+            border: 1px solid #298EBD;
+            box-shadow: 0 0 3px #298EBD;
+            display: none;
+        }
+        .mark-info::after {
+            content: '';
+            position: absolute;
+            left: calc(50% - 10px);
+            top: 100%;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid #298ebd;
+        }
+        .mark-info>.inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            font-size: 0;
+            background: -webkit-linear-gradient( 90deg, rgb(151, 218, 255) 0%, rgb(255, 255, 255) 100%);
+            color: #333;
+            white-space: nowrap;
+        }
+        .mark-info>.inner>.left {
+            width: 76px;
+            height: 76px;
+            box-sizing: border-box;
+            border-right: 1px solid #ccc;
+            display: inline-block;
+            vertical-align: top;
+        }
+        .mark-info>.inner>.left>.aqi {
+            font-size: 13px;
+            line-height: 28px;
+            margin-top: 10px;
+            width: 100%;
+            text-align: center;
+        }
+        .mark-info>.inner>.left>.value {
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 28px;
+            width: 100%;
+            text-align: center;
+            text-shadow: 1px 1px 1px #797979;
+        }
+        .mark-info>.inner>.right {
+            height: 76px;
+            box-sizing: border-box;
+            display: inline-block;
+            vertical-align: top;
+            padding: 0 10px;
+        }
+        .mark-info>.inner>.right>.time {
+            font-size: 13px;
+            line-height: 28px;
+            margin-top: 10px;
+            width: 100%;
+            text-align: left;
+            box-sizing: border-box;
+        }
+        .mark-info>.inner>.right>.address {
+            font-size: 13px;
+            line-height: 28px;
+            width: 100%;
+            text-align: left;
+            box-sizing: border-box;
+        }
+        .value.color0 {
+            color: #909090;
+        }
+        .value.color1 {
+            color: #74C900;
+        }
+        .value.color2 {
+            color: #F1CC04;
+        }
+        .value.color3 {
+            color: #EE7E00;
+        }
+        .value.color4 {
+            color: #EA000D;
+        }
+        .value.color5 {
+            color: #83004E;
+        }
+        .value.color6 {
+            color: #52001E;
+        }
+    }
+}
+
+.test {
+    position: absolute;
+    left: '500px';
+    top: '200px'
+}
