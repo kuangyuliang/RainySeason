@@ -280,7 +280,7 @@ WindLayer.NULL_WIND_VECTOR = [NaN, NaN, null];
 WindLayer.HOLE_VECTOR = [NaN, NaN, null];
 
 WindLayer.MAX_PARTICLE_AGE = 100;
-WindLayer.FLYSPEED = 0.13;
+WindLayer.FLYSPEED = 0.5;
 
 //---------------------工具方法------------------------------
 

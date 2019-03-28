@@ -4,8 +4,10 @@ import moment from 'moment';
 import { connect } from 'dva';
 import { Icon } from 'antd';
 import styles from './index.less';
-import { getAirLayerData } from '@/services/map';
+import { getAirLayerData, getWindyData } from '@/services/map';
 import { AIR_LAYER_URL } from '@/constants';
+import memoizeOne from 'memoize-one';
+import isEqual from 'lodash/isEqual';
 
 // @connect(({ map, loading }) => ({
 //     airLoading: loading.effects['map/getAirLayer'],
@@ -25,10 +27,13 @@ export default class ToolKit extends PureComponent {
 
         this.state = {
             map,
-            airLoading: false
+            airLoading: false,
+            windyLoading: false
         };
 
+        this.memoizeOneGetWindyData = memoizeOne(getWindyData, isEqual);
         this.airLayerHandler = this.airLayerHandler.bind(this);
+        this.windyLayerHandler = this.windyLayerHandler.bind(this);
     }
 
     initWind() {
@@ -121,6 +126,20 @@ export default class ToolKit extends PureComponent {
         }
     }
 
+    windyLayerHandler(e) {
+        const el = e.target.parentElement;
+        if (el.classList.contains('active')) {
+            this.windLayer.close();
+            el.classList.remove('active');
+        } else {
+            const { __map__: map } = this.props;
+            this.setState({ windyLoading: true });
+            el.classList.add('active');
+            this.windLayer = this.initWind(map);
+            this.drawWindLayer(moment());
+        }
+    }
+
     drawAirLayer() {
         const that = this;
         const { airLayerData, __map__: map } = this.props;
@@ -133,47 +152,33 @@ export default class ToolKit extends PureComponent {
         });
     }
 
-    drawWindLayer(e) {
-        const el = e.target.parentElement;
-        const { activeWindyLayer } = this.props;
-        // let { map, windLayer } = this.state;
-        if (activeWindyLayer) {
-            if (el.classList.contains('active')) {
-                // windLayer.close();
-                el.classList.remove('active');
-                activeWindyLayer(false);
-            } else {
-                // const that = this;
-                // const { dispatch } = this.props;
-                // const windLayer = this.initWind(map);
-                // dispatch({
-                //     type: 'map/getWindyLayer',
-                //     payload: {
-                //         date: moment()
-                //     },
-                //     callback(res) {
-                //         if (res) {
-                //             windLayer.layer.update(res);
-                //             that.setState({ windLayer });
-                //             el.classList.add('active');
-                //         }
-                //     }
-                // });
-                activeWindyLayer(true);
-                el.classList.add('active');
-            }
-        }
+    drawWindLayer = (date) => {
+        let params = {
+            dir: date.format('YYYYMMDD'),
+            file: date.format('YYYYMMDDHH0000')
+        };
+        this.memoizeOneGetWindyData(params).then(res => {
+            this.windLayer.layer.update(res);
+            this.setState({ windyLoading: false });
+        }).catch(e => {
+            params = {
+                ...params,
+                dir: date.subtract(1, 'day').format('YYYYMMDD')
+            };
+            this.memoizeOneGetWindyData(params).then(res => {
+                this.windLayer.layer.update(res);
+                this.setState({ windyLoading: false });
+            });
+        });
     }
 
-    componentDidUpdate() {
-        if (this.airLayer.getMap()) {
-            this.drawAirLayer();
-        }
-    }
+    // componentDidUpdate() {
+    //     if (this.airLayer.getMap()) {
+    //         this.drawAirLayer();
+    //     }
+    // }
 
     render() {
-        // console.log(this.props);
-        // console.log(this.state);
         const { airLoading, windyLoading } = this.state;
         return (
             <div className={styles["right-map-toolbar"]}>
@@ -185,7 +190,7 @@ export default class ToolKit extends PureComponent {
                             windyLoading ?
                                 <Icon type="loading" className="icons" />
                                 :
-                                <img src={require('@/assets/right-icon-1.png')} className="icons" onClick={this.drawWindLayer.bind(this)} />
+                                <img src={require('@/assets/right-icon-1.png')} className="icons" onClick={this.windyLayerHandler} />
                         }
                         <div className="text">风场</div>
                     </li>

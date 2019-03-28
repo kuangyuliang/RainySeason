@@ -11,7 +11,7 @@ export async function getAirLayerData(params) {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: serialize(params),
+        body: serialize(params)
     });
 }
 

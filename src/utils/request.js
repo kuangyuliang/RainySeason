@@ -63,7 +63,9 @@ function checkStatus(response) {
  */
 export default async function request(url, options = {}) {
     const token = getLocalStorage('token');
-    options.headers = { 'Content-Type': 'application/json' };
+    if (!options.headers) {
+        options.headers = { 'Content-Type': 'application/json' };
+    }
     if (token) {
         options.headers = { ...options.headers, Authorization: `Bearer ${token}` };
     }

@@ -3,7 +3,8 @@ import FormItem from './FormItem';
 import { SEARCH_COL_SPAN } from '@/constants';
 import { Form, Row, Col, Button, Icon } from 'antd';
 
-class BasicSearch extends PureComponent {
+@Form.create()
+export default class BasicSearch extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -92,5 +93,3 @@ class BasicSearch extends PureComponent {
         );
     }
 }
-
-export default Form.create()(BasicSearch);
