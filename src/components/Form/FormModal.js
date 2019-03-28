@@ -1,8 +1,7 @@
 import { PureComponent } from 'react';
-import { Modal, Form } from 'antd';
-import BasicForm from './BasicForm'
+import { Modal } from 'antd';
+import BasicForm from './BasicForm';
 
-@Form.create()
 export default class BasicModal extends PureComponent {
     constructor(props) {
         super(props);
@@ -16,24 +15,28 @@ export default class BasicModal extends PureComponent {
         this.setState({
             visible: true,
         });
-    };
+    }
 
     hideModelHandler = () => {
         this.setState({
             visible: false,
         });
-    };
+    }
 
     okHandler = () => {
-        const { onOk } = this.props;
-        this.props.form.validateFields((err, values) => {
+        const form = this.formRef.props.form;
+        form.validateFields((err, values) => {
             if (!err) {
-                console.log(values);
+                const { onOk } = this.props;
                 onOk(values);
                 this.hideModelHandler();
             }
         });
-    };
+    }
+
+    saveFormRef = (formRef) => {
+        this.formRef = formRef;
+    }
 
     render() {
         const { children, record } = this.props;
@@ -56,7 +59,10 @@ export default class BasicModal extends PureComponent {
                     onOk={this.okHandler}
                     onCancel={this.hideModelHandler}
                 >
-                    <BasicForm formItems={this.props.formItems} form={this.props.form} onSubmit={this.okHandler} />
+                    <BasicForm
+                        formItems={this.props.formItems}
+                        wrappedComponentRef={this.saveFormRef}
+                    />
                 </Modal>
             </span>
         );
