@@ -143,6 +143,10 @@ export default class BaseMenu extends PureComponent {
       };
     }
 
+    if (selectedKeys.length == 0) {
+      selectedKeys.push('/');
+    }
+
     const { handleOpenChange, style, menuData } = this.props;
     const cls = classNames(className, {
       'top-nav-menu': mode === 'horizontal',
