@@ -31,7 +31,7 @@
 
 ### 第三方组件
 
-参照 [Ant Design Pro](http://pro.ant.design/index-cn)
+参照 [Ant Design Pro](https://github.com/ant-design/ant-design-pro/)
 
 - BreadcrumbView 面包屑
 - Ellipsis 文本自动省略号
