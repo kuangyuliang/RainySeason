@@ -57,6 +57,43 @@
 - Map 地图
 - TimePlay 时间播放器
 
+
+```javascript
+import React, { PureComponent } from 'react';
+import TimePlay from '@/components/TimePlay';
+
+export default class Demo extends PureComponent {
+    constructor(props) {
+        super(props);
+        //创建Ref
+        this.timeplay = React.createRef();
+    }
+
+    test = (date) => {
+        console.log(date.format('YYYY-MM-DD HH:mm'));
+        //暂停播放(如果只是点击某一个时间点,不需要调用暂停和继续播放)
+        this.timeplay.current.delayAnimation();
+        //do something...
+        setTimeout(() => {
+            //继续播放
+            this.timeplay.current.continueAnimation();
+        }, 5000);
+    }
+
+    render(){
+        const options = {
+            startDate: moment().add(-3, 'months'),  //开始时间
+            endDate: moment().add(6, 'days'),       //结束时间
+            currentData: moment(),                  //当前时间
+            timeUnitControl: false,                 //是否显示修改时间单位
+            speed: 1000,                            //播放速度
+            callback: this.test                     //回调
+        };
+        return <TimePlay {...options} />;
+    }
+}
+```
+
 ## 使用
 
 ```bash

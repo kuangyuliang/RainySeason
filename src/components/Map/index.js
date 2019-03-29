@@ -6,12 +6,17 @@ import MapSearchBar from '@/components/MapSearchBar';
 import TimePlay from '@/components/TimePlay';
 
 export default class AirMap extends PureComponent {
-    test = (date, delay, ctu) => {
+    constructor(props) {
+        super(props);
+        this.timeplay = React.createRef();
+    }
+
+    test = (date) => {
         console.log(date.format('YYYY-MM-DD HH:mm'));
-        //delay();
-        // setTimeout(() => {
-        //     ctu();
-        // }, 5000);
+        this.timeplay.current.delayAnimation();
+        setTimeout(() => {
+            this.timeplay.current.continueAnimation();
+        }, 5000);
     }
 
     render() {
@@ -60,7 +65,7 @@ export default class AirMap extends PureComponent {
                     }}
                 />
 
-                <TimePlay timeUnitControl={false} callback={this.test} />
+                <TimePlay timeUnitControl={false} callback={this.test} ref={this.timeplay} />
             </Map>
         )
     }

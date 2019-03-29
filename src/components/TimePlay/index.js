@@ -343,7 +343,7 @@ export default class TimePlay extends PureComponent {
             }
             document.querySelector('.timeProgress-bar').style.width = `${this.option.width}px`;
             const { year, month, day, hour } = this.option.curr_day;
-            this.option.callback(moment(`${year}-${month}-${day} ${hour}:00`, 'YYYY-MM-DD HH:mm'), this.delayAnimation.bind(this), this.continueAnimation.bind(this));
+            this.option.callback(moment(`${year}-${month}-${day} ${hour}:00`, 'YYYY-MM-DD HH:mm'));
         }, this.option.speed);
     }
 
