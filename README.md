@@ -101,7 +101,7 @@ export default class Demo extends PureComponent {
 $ npm install -g umi
 
 # 复制项目到本地
-$ git clone git://119.23.241.69:19418/RainySeason.git
+$ git clone https://github.com/kuangyuliang/RainySeason.git
 
 # 添加依赖
 $ cd RainySeason
