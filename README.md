@@ -60,6 +60,7 @@
 
 ```javascript
 import React, { PureComponent } from 'react';
+import moment from 'moment';
 import TimePlay from '@/components/TimePlay';
 
 export default class Demo extends PureComponent {
@@ -69,7 +70,7 @@ export default class Demo extends PureComponent {
         this.timeplay = React.createRef();
     }
 
-    test = (date) => {
+    test = date => {
         console.log(date.format('YYYY-MM-DD HH:mm'));
         //暂停播放(如果只是点击某一个时间点,不需要调用暂停和继续播放)
         this.timeplay.current.delayAnimation();
